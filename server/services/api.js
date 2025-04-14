@@ -1,7 +1,8 @@
-// Use relative paths in production, absolute in development
-const API_BASE_URL = 'https://www.serranoartcamp.org/api' 
+// src/services/api.js
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
 export const ApiService = {
+  // Submit registration form
   submitRegistration: async (formData) => {
     try {
       const response = await fetch(`${API_BASE_URL}/registrations`, {
@@ -11,16 +12,22 @@ export const ApiService = {
         },
         body: JSON.stringify(formData),
       });
-
+      
+      const data = await response.json();
+      
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || `Registration Failed :( ... Try Again!)`);
+        throw new Error(data.message || 'Server error');
       }
-
-      return await response.json();
+      
+      return data;
     } catch (error) {
-      console.error('API error:', error.message);
-      throw error; // Re-throw for error boundaries
+      console.error('API error:', error);
+      throw error;
     }
   },
+  
+  // Get flyer PDF URL
+//   getFlyerUrl: () => {
+//     return `${API_BASE_URL.replace('/api', '')}/flyers/artcamp_flyer.pdf`;
+//   }
 };

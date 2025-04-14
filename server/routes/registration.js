@@ -178,17 +178,6 @@ async function sendConfirmationEmail(formData) {
   }
 }
 
-router.get("/api", (req, res) => {
-  res.json({
-    status: "API working",
-    endpoints: [
-      "POST /registrations",
-      "GET /registrations",
-      "PUT /registrations/:id/payment",
-    ],
-  });
-});
-
 // Get all registrations (admin only)
 router.get("/", async (req, res) => {
   try {
