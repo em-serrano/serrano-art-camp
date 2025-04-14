@@ -11,10 +11,20 @@ require('dotenv').config();
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 connectDB()
 
 // Middleware
-app.use(cors()); 
+app.use(cors({
+  origin: [
+    'https://serranoartcamp.org',
+    'https://www.serranoartcamp.org',
+    'http://localhost:5173'
+  ],
+  methods: ['GET', 'POST', 'PUT']
+}));
 app.use(bodyParser.json());
 // app.use(cookieParser());
 // app.use(csurf({ cookie: true }));

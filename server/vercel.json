@@ -10,7 +10,7 @@
       "src": "server/server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["connections/**", "models/**", "routes/**"]
+        "includeFiles": ["connections/MongoConn.js", "models/RegistrationSchema.js", "routes/registration.js", "utils/sanitize.js"]
       }
     }
   ],
