@@ -36,5 +36,14 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'OK', message: 'Server is running' });
 });
 
+if (process.env.LOCAL_DEVELOPMENT) {
+  const PORT = 3000;
+  connectDB().then(() => {
+    app.listen(PORT, () => {
+      console.log(`Local server running on http://localhost:${PORT}`);
+    });
+  });
+}
+
 
 module.exports = app
