@@ -5,11 +5,6 @@ import "../styles/PricingCrdImgFront.css"
 
 const PricingAndActivities = () => {
   
-  const artistExamples = {
-    okeefe: "./src/assets/GOKeefe.jpg",
-    woodsey: "./src/assets/AWoodsey.jpg"
-  };
-
   return (
     <section className="preference-section">
         
@@ -29,7 +24,7 @@ const PricingAndActivities = () => {
               <div className="pricing-card with-artist-example">
                 <div className="artist-example-banner">
                   <img 
-                    src={artistExamples.okeefe} 
+                    src="https://www.neh.gov/sites/default/files/2018-07/2018_3-Summer_OKeeffe_Hawaii_05.jpg" 
                     alt="Georgia O'Keefe inspired artwork" 
                     className="artist-example-img"
                   />
@@ -54,7 +49,7 @@ const PricingAndActivities = () => {
               <div className="pricing-card with-artist-example">
                 <div className="artist-example-banner">
                   <img 
-                    src={artistExamples.woodsey} 
+                    src="https://www.phillipscollection.org/sites/default/files/collection/1951.jpg" 
                     alt="Alma Woodsey inspired artwork" 
                     className="artist-example-img"
                   />
