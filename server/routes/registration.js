@@ -8,13 +8,17 @@ const sanitizeInput = require('../utils/sanitize');
 
 // Rate limiter
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 5,
-    message: {
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  skipSuccessfulRequests: true,
+  handler: (req, res) => {
+    return res.status(429).json({
       success: false,
-      message: 'Too many registrations from this IP, please try again later.',
-    },
-  });
+      message: 'Too many attempts. Please try again in 15 minutes.'
+    });
+  }
+});
 
 // Create a new registration
 router.post('/', limiter, async (req, res) => {
