@@ -1,7 +1,11 @@
+// src/services/api.js
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+
 export const ApiService = {
+  // Submit registration form
   submitRegistration: async (formData) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/registrations`, {
+      const response = await fetch(`${API_BASE_URL}/registrations`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

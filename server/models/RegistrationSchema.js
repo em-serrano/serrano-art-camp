@@ -1,21 +1,22 @@
+// models/RegistrationSchema.js
 const mongoose = require('mongoose');
 
 const RegistrationSchema = new mongoose.Schema({
+  // Parent information
   parentName: {
     type: String,
-    required: true,
-    trim: true
+    required: true
   },
   email: {
     type: String,
-    required: true,
-    lowercase: true,
-    trim: true
+    required: true
   },
   phone: {
     type: String,
     required: true
   },
+  
+  // Child information
   childName: {
     type: String,
     required: true
@@ -24,18 +25,20 @@ const RegistrationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  
+  // Registration details
   weekSelection: {
     type: String,
-    enum: ['June', 'July'],
-    required: true
+    required: true,
+    enum: ['June', 'July']
   },
   dietaryNeeds: {
     type: String,
-    default: 'None'
+    default: "None"
   },
   allergies: {
     type: String,
-    default: 'None'
+    default: "None"
   },
   emergencyContact: {
     type: String,
@@ -43,24 +46,28 @@ const RegistrationSchema = new mongoose.Schema({
   },
   specialNotes: {
     type: String,
-    default: 'None'
+    default: "None"
   },
+  
+  // Status tracking
   paymentStatus: {
     type: String,
-    enum: ['Unpaid', 'Paid'],
-    default: 'Unpaid'
+    default: 'Unpaid',
+    enum: ['Paid', 'Unpaid']
   },
   registrationStatus: {
     type: String,
-    enum: ['Pending', 'Confirmed', 'Waitlisted'],
-    default: 'Pending'
+    default: 'Pending',
+    enum: ['Pending', 'Confirmed', 'Waitlisted']
+  },
+  waitlistPosition: {
+    type: Number,
+    default: null
   },
   registrationDate: {
     type: Date,
     default: Date.now
   }
-}, {
-  timestamps: true
 });
 
 module.exports = mongoose.model('Registration', RegistrationSchema);
