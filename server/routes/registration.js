@@ -1,4 +1,3 @@
-// routes/registrations.js
 const express = require("express");
 const router = express.Router();
 const Registration = require("../models/RegistrationSchema.js");
