@@ -89,7 +89,7 @@ router.post('/', limiter, async (req, res) => {
   });
   
   // Email confirmation function
-  async function sendConfirmationEmail(formData, registrationId) {
+  async function sendConfirmationEmail(formData) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
