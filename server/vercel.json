@@ -19,7 +19,7 @@
       "src": "/api/(.*)",
       "dest": "server",
       "headers": {
-        "Access-Control-Allow-Origin": "https://serranoartcamp.org",
+        "Access-Control-Allow-Origin": "https://www.serranoartcamp.org",
         "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE"
       }
     },
