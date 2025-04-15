@@ -33,3 +33,5 @@ client/coverage/
 # Server-specific
 server/.nyc_output/
 server/coverage/
+.vercel
+.env*.local
