@@ -5,7 +5,7 @@ export const ApiService = {
   // Submit registration form
   submitRegistration: async (formData) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/registrations`, {
+      const response = await fetch(`${API_BASE_URL}/api/registrations`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

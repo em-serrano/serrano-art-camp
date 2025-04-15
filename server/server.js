@@ -6,9 +6,9 @@ const registrationRoutes = require('./routes/registration.js');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
-const sanitizeInput = require('./utils/sanitize'); // Youll need to create this
-// const cookieParser = require('cookie-parser');
-// const csurf = require('csurf');
+const sanitizeInput = require('./utils/sanitize'); 
+
+
 require('dotenv').config();
 
 const app = express();
@@ -17,10 +17,13 @@ const PORT = process.env.PORT || 3000;
 connectDB()
 
 // Middleware
-app.use(cors()); // Change this to your frontend URL
+app.use(cors({
+  origin: 'https://www.serranoartcamp.org', 
+  methods: ['POST', 'GET'],
+  credentials: true 
+})); 
 app.use(bodyParser.json());
-// app.use(cookieParser());
-// app.use(csurf({ cookie: true }));
+
 
 app.use('/api/registrations', registrationRoutes); 
 
@@ -34,7 +37,7 @@ const limiter = rateLimit({
   },
 });
 
-app.get('/api/health', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).json({ status: 'OK', message: 'Server is running' });
 });
 
