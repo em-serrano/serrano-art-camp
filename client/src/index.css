@@ -41,7 +41,7 @@
   
   .app--container {
     padding-top: 1rem;
-    background-image: url('./src/assets/ArtCampBG.jpeg');
+    background-image: url('/ArtCampBG.jpeg');
     position: fixed;
     top: 0;
     left: 0;
