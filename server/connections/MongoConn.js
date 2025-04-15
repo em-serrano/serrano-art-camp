@@ -1,24 +1,33 @@
-import mongoose from 'mongoose';
-
-let cachedDb = null;
+const mongoose = require('mongoose');
 
 async function connectDB() {
-  if (cachedDb) {
-    console.log("Using cached MongoDB connection");
-    return cachedDb;
-  }
-
   try {
-    console.log("Connecting to MongoDB...");
-    const db = await mongoose.connect(process.env.MONGO_URI);
-
-    cachedDb = db;
-    console.log("Successfully connected to MongoDB");
-    return cachedDb;
-  } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
-    throw new Error('Database connection failed');
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('✅ MongoDB connected');
+  } catch (err) {
+    console.error('❌ MongoDB connection error:', err.message);
+    process.exit(1); // Exit process on failure
   }
 }
 
-export default connectDB;
+// Event listeners for production monitoring
+mongoose.connection.on('connected', () => {
+  console.log('Mongoose default connection open');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('Mongoose connection error:', err);
+});
+
+mongoose.connection.on('disconnected', () => {
+  console.log('Mongoose connection disconnected');
+});
+
+// Graceful shutdown
+process.on('SIGTERM', async () => {
+  await mongoose.disconnect();
+  console.log('Mongoose connection closed');
+  process.exit(0);
+});
+
+module.exports = connectDB;
