@@ -9,6 +9,12 @@ export default async function handler(req, res) {
   }
 
   try {
+
+      // Log to confirm function execution
+      console.log('Serverless function hit');
+
+      await connectDB();
+
     const { body } = req;
 
     // Honeypot check
