@@ -120,6 +120,18 @@ const initialState = {
 function campPreferencesReducer(state, action) {
   switch (action.type) {
     case "TOGGLE_PREFERENCE":
+      if (action.section === "gradeLevel") {
+        return {
+          ...state,
+          gradeLevel: {
+            [action.item]: true,
+          },
+          touched: {
+            ...state.touched,
+            [action.section]: true,
+          },
+        };
+      }
       return {
         ...state,
         [action.section]: {

@@ -56,8 +56,7 @@ router.post("/", limiter, async (req, res) => {
   });
 
     const selectedGrade = Object.keys(formData.gradeLevel)
-      .filter((grade) => formData.gradeLevel[grade])
-      .join(", ");
+      .filter((grade) => formData.gradeLevel[grade]);
 
     // Create MongoDB document
     const registration = new Registration({
