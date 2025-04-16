@@ -118,14 +118,14 @@ async function sendConfirmationEmail(formData) {
     console.log("Attempting to send email to:", email);
 
     const info = await transporter.sendMail({
-      from: '"Art Camp" <' + process.env.EMAIL_USER + ">",
+      from: '"Serrano Art Camp" <' + process.env.EMAIL_USER + ">",
       to: email,
       cc: process.env.ADMIN_EMAIL,
       subject: `Serrano Art Camp Registration Confirmation`,
       text: `
           Thank you for registering ${camperName} for Serrano Art Camp, 2025! 
           
-          To complete registration and confirm your artist's spot please send registration fee to Molly Serrano thorugh Venmo or Zelle. 
+          To complete registration and confirm your artist's spot please send registration fee to Molly Serrano thorugh Venmo or Zelle. Payment must be completed within 48 hours of registration. Weekly sessions are limited to 15 artists on a first come first serve basis. 
           Payment Options:
           - Venmo: Molly-Serrano
           - Zelle: (310)-871-5657
@@ -144,7 +144,7 @@ async function sendConfirmationEmail(formData) {
             <h2 style="color: #558B87;">Serrano Art Camp Registration Confirmation!</h2>
             <p>Dear ${parentName},</p>
             <p>Thank you for registering <strong>${camperName}</strong> for Serrano Art Camp 2025!</p>
-            <p>To complete registration and confirm your artist's spot, please send registration fee to Molly Serrano through Venmo or Zelle.</p>
+            <p>To complete registration and confirm your artist's spot, please send registration fee to Molly Serrano through Venmo. Payment must be completed within 48 hours of registration. First come first serve.</p>
             <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
               <h3 style="color: #558B87; margin-top: 0;">Registration Details:</h3>
               <ul>
@@ -156,10 +156,10 @@ async function sendConfirmationEmail(formData) {
               </ul>
             </div>
             <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
-              <h3 style="color: #558B87; margin-top: 0;">Payment Options:</h3>
+              <h3 style="color: #558B87; margin-top: 0;">Payment Information:</h3>
+              <h5 style="color: #558B87; margin-top: 0;">$250/week or $450 for both weeks</h5>
               <ul>
                 <li><strong>Venmo:</strong> Molly-Serrano</li>
-                <li><strong>Zelle:</strong> (310)-871-5657</li>
               </ul>
             </div>
             <p>I am excited to have your child join me this summer! Please check your email for more info as the camp dates approach.</p>
