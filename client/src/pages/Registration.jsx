@@ -132,21 +132,6 @@ function campPreferencesReducer(state, action) {
         },
       };
 
-    case "TOGGLE_SINGLE_PREFERENCE":
-      if (action.section === "gradeLevel") {
-        return {
-          ...state,
-          gradeLevel: {
-            // Toggle the selected grade, deselecting it if already selected
-            [action.item]: !state.gradeLevel[action.item],
-          },
-          touched: {
-            ...state.touched,
-            [action.section]: true,
-          },
-        }
-      };
-
     case "UPDATE_REGISTRATION":
       return {
         ...state,
@@ -275,12 +260,8 @@ export default function Registration() {
 
   // Handlers
   const handleToggle = (section, item) => {
-    if (section === "gradeLevel") {
-      dispatch({type: "TPGGLE_SINGLE_PREFERENCE", section, item});
-    } else {
     dispatch({ type: "TOGGLE_PREFERENCE", section, item });
   };
-}
 
   const updateRegistrationInfo = (field, value) => {
     dispatch({
