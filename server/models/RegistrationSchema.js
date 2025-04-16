@@ -28,7 +28,7 @@ const RegistrationSchema = new mongoose.Schema({
   
   // Registration details
   weekSelection: {
-    type: String,
+    type: [String],
     required: true,
     enum: ['June', 'July']
   },

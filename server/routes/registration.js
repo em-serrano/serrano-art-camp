@@ -48,8 +48,12 @@ router.post("/", limiter, async (req, res) => {
 
     // Format data for MongoDB
     const selectedSessions = Object.keys(formData.sessions)
-      .filter((session) => formData.sessions[session])
-      .join(", ");
+  .filter((session) => formData.sessions[session])
+  .map((session) => {
+    if (session.includes("June")) return "June";
+    if (session.includes("July")) return "July";
+    return session;
+  });
 
     const selectedGrade = Object.keys(formData.gradeLevel)
       .filter((grade) => formData.gradeLevel[grade])
