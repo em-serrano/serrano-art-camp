@@ -62,7 +62,7 @@ router.post("/", limiter, async (req, res) => {
       phone: formData.registrationInfo.contactNumber,
       childName: formData.registrationInfo.camperName,
       childGrade: selectedGrade,
-      weekSelection: selectedSessions.includes("June") ? "June" : "July",
+      weekSelection: selectedSessions,
       dietaryNeeds:
         Object.keys(formData.dietaryNeeds)
           .filter((need) => formData.dietaryNeeds[need] && need !== "None")
