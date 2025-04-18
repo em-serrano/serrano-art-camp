@@ -48,12 +48,12 @@ router.post("/", limiter, async (req, res) => {
 
     // Format data for MongoDB
     const selectedSessions = Object.keys(formData.sessions)
-  .filter((session) => formData.sessions[session])
-  .map((session) => {
-    if (session.includes("June")) return "June";
-    if (session.includes("July")) return "July";
-    return session;
-  });
+      .filter((session) => formData.sessions[session])
+      .map((session) => {
+        if (session.includes("June")) return "June";
+        if (session.includes("July")) return "July";
+        return session;
+      });
 
     const selectedGrade = Object.keys(formData.gradeLevel)
       .filter((grade) => formData.gradeLevel[grade])
@@ -127,28 +127,36 @@ async function sendConfirmationEmail(formData) {
       cc: process.env.ADMIN_EMAIL,
       subject: `Serrano Art Camp Registration Confirmation`,
       text: `
-          Thank you for registering ${camperName} for Serrano Art Camp, 2025! 
-          
-          To complete registration and confirm your artist's spot please send registration fee to Molly Serrano thorugh Venmo or Zelle. Payment must be completed within 48 hours of registration. Weekly sessions are limited to 15 artists on a first come first serve basis. 
-          Payment Options:
-          - Venmo: Molly-Serrano
-          - Zelle: (310)-871-5657
-  
+          Thank you for registering ${camperName} for Serrano Art Camp 2025!
+
+          Please Note: This form submission does not guarantee a spot. We are limiting each session to 15 artists, and spaces will be filled in the order registrations are received.
+
+          You will receive a follow-up email soon letting you know if a spot is available. If it is, we’ll include payment instructions at that time. If the session is full, we’ll offer you the option to join the waitlist.
+
           Registration Details:
           - Camper: ${camperName}
           - Parent/Guardian: ${parentName}
           - Grade Level: ${selectedGrade}
           - Sessions: ${selectedSessions}
-          
-  
-          I am so excited to have your child join me this summer!
+
+          Thank you so much for your interest! I'm looking forward to a fun and creative summer.
+
         `,
       html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #558B87;">Serrano Art Camp Registration Confirmation!</h2>
+            <h2 style="color: #558B87;">Serrano Art Camp Registration Received!</h2>
             <p>Dear ${parentName},</p>
             <p>Thank you for registering <strong>${camperName}</strong> for Serrano Art Camp 2025!</p>
-            <p>To complete registration and confirm your artist's spot, please send registration fee to Molly Serrano through Venmo. Payment must be completed within 48 hours of registration. First come first serve.</p>
+
+            <p><strong>Please note:</strong> This form submission does <em>not</em> guarantee a spot. Each session is limited to 15 artists, and we are reviewing registrations in the order they are received.</p>
+
+            <p>You will receive a follow-up email shortly with either:
+              <ul>
+                <li>Confirmation that a spot is available, along with payment details</li>
+                <li>Or a notice that the selected session(s) is full, with the option to join the waitlist</li>
+              </ul>
+            </p>
+
             <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
               <h3 style="color: #558B87; margin-top: 0;">Registration Details:</h3>
               <ul>
@@ -159,14 +167,8 @@ async function sendConfirmationEmail(formData) {
                 <li><strong>Session(s):</strong> ${selectedSessions}</li>
               </ul>
             </div>
-            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
-              <h3 style="color: #558B87; margin-top: 0;">Payment Information:</h3>
-              <h5 style="color: #558B87; margin-top: 0;">$250/week or $450 for both weeks</h5>
-              <ul>
-                <li><strong>Venmo:</strong> Molly-Serrano</li>
-              </ul>
-            </div>
-            <p>I am excited to have your child join me this summer! Please check your email for more info as the camp dates approach.</p>
+  
+            <p>Thank you again for your interest! Please check your email for any updates, you'll hear from me soon!</p>
             <p>Best regards,<br>Mrs. Molly Serrano</p>
           </div>
         `,
