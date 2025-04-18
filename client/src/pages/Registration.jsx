@@ -541,7 +541,7 @@ export default function Registration() {
           </h3>
           <InputField
             label="Special Needs/Notes"
-            placeholder="Anything else we should know about your child?"
+            placeholder="Anything else I should know about your child?"
             value={preferences.registrationInfo.specialNeeds}
             onChange={(val) => updateRegistrationInfo("specialNeeds", val)}
             type="textarea"
