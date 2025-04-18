@@ -5,6 +5,7 @@ import "./App.css";
 
 import Footer from "./components/Footer";
 import PricingAndActivities from "./components/PricingCardsImgFront";
+import SoldOutCard from "./components/SoldOutCard";
 import Registration from "./pages/Registration";
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
         </div>
       </header>
 
-      <PricingAndActivities />
+      {/* <PricingAndActivities /> */}
+      <SoldOutCard />
       <Registration />
       <Footer />
       
