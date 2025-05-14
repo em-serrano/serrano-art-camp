@@ -54,14 +54,35 @@ const InputField = ({
 };
 
 // PreferenceCard component
-const PreferenceCard = ({ item, selected, onClick, icon }) => {
+// const PreferenceCard = ({ item, selected, onClick, icon }) => {
+//   return (
+//     <div
+//       className={`preference-card ${selected ? "selected" : ""}`}
+//       onClick={onClick}
+//     >
+//       <div className="card-icon">{icon}</div>
+//       <span>{item}</span>
+//     </div>
+//   );
+// };
+
+const PreferenceCard = ({ item, selected, onClick, icon, disabled, isFull }) => {
+  // Add support for disabled/full sessions
   return (
     <div
-      className={`preference-card ${selected ? "selected" : ""}`}
-      onClick={onClick}
+      className={`preference-card ${selected ? "selected" : ""} ${isFull ? "full" : ""}`}
+      onClick={disabled ? undefined : onClick}
+      style={{
+        cursor: disabled ? "not-allowed" : "pointer",
+        opacity: disabled ? 0.6 : 1,
+        textDecoration: isFull ? "line-through" : "none"
+      }}
     >
       <div className="card-icon">{icon}</div>
-      <span>{item}</span>
+      <span>
+        {item}
+        {isFull && <span className="session-full-tag"> (FULL)</span>}
+      </span>
     </div>
   );
 };
@@ -70,6 +91,10 @@ const PreferenceCard = ({ item, selected, onClick, icon }) => {
 const initialState = {
   sessions: {
     "Week 1: Back to Nature (June 9-13)": false,
+    "Week 2: Dots and Lines (July 7-11)": false,
+  },  
+  fullSessions: {
+    "Week 1: Back to Nature (June 9-13)": true, // Set to true to indicate this session is full
     "Week 2: Dots and Lines (July 7-11)": false,
   },
   gradeLevel: {
@@ -259,7 +284,17 @@ export default function Registration() {
   };
 
   // Handlers
+  // const handleToggle = (section, item) => {
+  //   dispatch({ type: "TOGGLE_PREFERENCE", section, item });
+  // };
+
   const handleToggle = (section, item) => {
+    // Don't toggle if it's a full session
+    if (section === "sessions" && preferences.fullSessions && preferences.fullSessions[item]) {
+      return; // Exit without toggling for full sessions
+    }
+    
+    // Original toggle logic for non-full sessions
     dispatch({ type: "TOGGLE_PREFERENCE", section, item });
   };
 
@@ -473,6 +508,15 @@ export default function Registration() {
             <FaCalendarAlt className="section-icon" /> Camp Sessions
           </h3>
           <div className="preference-options">
+            {/* {Object.keys(preferences.sessions).map((session) => (
+              <PreferenceCard
+                key={session}
+                item={session}
+                selected={preferences.sessions[session]}
+                onClick={() => handleToggle("sessions", session)}
+                icon={<FaCalendarDay />}
+              />
+            ))} */}
             {Object.keys(preferences.sessions).map((session) => (
               <PreferenceCard
                 key={session}
@@ -480,6 +524,8 @@ export default function Registration() {
                 selected={preferences.sessions[session]}
                 onClick={() => handleToggle("sessions", session)}
                 icon={<FaCalendarDay />}
+                disabled={preferences.fullSessions[session]}
+                isFull={preferences.fullSessions[session]}
               />
             ))}
           </div>

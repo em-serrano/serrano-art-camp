@@ -5,7 +5,7 @@ import "../styles/SoldOut.css";
 
 const PricingAndActivities = () => {
   // Set these to true when the week is full
-  const week1Full = false;
+  const week1Full = true;
   const week2Full = false;
   const showGalleryComingSoon = true;
   
