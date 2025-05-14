@@ -15,7 +15,7 @@ const Footer = () => {
             <h4>Contact Information</h4>
             <ul className="list-unstyled">
               <li><FaEnvelope /> <a href="mailto:serranoartcamp@gmail.com">serranoartcamp@gmail.com</a></li>
-              <li><FaPhone /> <a href="tel:+3108715657" >(310)-871-5657</a></li>
+              <li><FaPhone /> <a href="tel:+13108715657" >+1(310)-871-5657</a></li>
               <li><FaMapMarkerAlt /> <a href="https://maps.app.goo.gl/jShJ2ERgPSQnTXFJ9">Grace + Peace Church, 6301 Woodrow Ave.</a></li>
             </ul>
           </div>
