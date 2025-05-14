@@ -4,7 +4,7 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 const Footer = () => {
   return (
     <footer>
-      <div className="">
+      <div className="footer-text">
         <div className="row">
           <div className="col-md-4">
             <h4>Serrano Art Camp 2025</h4>
@@ -15,8 +15,8 @@ const Footer = () => {
             <h4>Contact Information</h4>
             <ul className="list-unstyled">
               <li><FaEnvelope /> <a href="mailto:serranoartcamp@gmail.com">serranoartcamp@gmail.com</a></li>
-              <li><FaPhone /> (310)-871-5657</li>
-              <li><FaMapMarkerAlt /> Grace + Peace Church, 6301 Woodrow Ave.</li>
+              <li><FaPhone /> <a href="tel:+3108715657" >(310)-871-5657</a></li>
+              <li><FaMapMarkerAlt /> <a href="https://maps.app.goo.gl/jShJ2ERgPSQnTXFJ9">Grace + Peace Church, 6301 Woodrow Ave.</a></li>
             </ul>
           </div>
           <div className="col-md-4">

@@ -130,6 +130,13 @@
     margin-bottom: 0.5rem;
     position: relative;
   }
+
+  .waitlist-text a {
+    color: #e1306c;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
   
   /* Gallery Coming Soon Styling */
   .gallery-coming-soon {

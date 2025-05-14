@@ -53,3 +53,7 @@
     background-repeat: no-repeat;
   }
 
+.footer-text a {
+  color: #e1306c;
+  text-decoration: none;
+}
