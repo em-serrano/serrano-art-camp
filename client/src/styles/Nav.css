@@ -1,0 +1,152 @@
+/* Nav.css - Custom styles for Bootstrap navigation */
+
+/* Navbar base styles */
+.navbar {
+  background-color: var(--bg-color);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-display);
+  padding: 0.75rem 0;
+}
+
+/* Brand/logo styles */
+.navbar-brand {
+  font-weight: 700;
+  color: var(--primary-color) !important;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--secondary-color) !important;
+}
+
+.navbar-brand img {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+  transform: scale(1.05);
+}
+
+/* Navigation links */
+.nav-link {
+  color: var(--primary-color) !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  margin: 0 0.25rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--secondary-color) !important;
+  background-color: rgba(154, 187, 185, 0.1); /* accent color with opacity */
+}
+
+.nav-link.active {
+  color: var(--secondary-color) !important;
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background-color: var(--secondary-color);
+}
+
+/* Mobile menu button */
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(74, 102, 65, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Offcanvas mobile menu */
+.offcanvas {
+  background-color: var(--bg-color) !important;
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid rgba(154, 187, 185, 0.2); /* accent color with opacity */
+}
+
+.btn-close {
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%234a6641'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat !important;
+  opacity: 1;
+}
+
+/* Mobile menu links */
+.offcanvas-body .nav-link {
+  font-size: 1.25rem;
+  padding: 0.75rem 1rem !important;
+  margin: 0.25rem 0;
+}
+
+/* Primary button (Request a Quote) */
+.btn-primary {
+  background-color: var(--button-bg) !important;
+  border-color: var(--button-bg) !important;
+  color: var(--button-text) !important;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Mobile menu button */
+.btn-primary.mobile-btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .navbar {
+    padding: 0.5rem 0;
+  }
+  
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+  
+  .offcanvas-body {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Dark mode adjustments (optional) */
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background-color: rgba(33, 37, 41, 0.95);
+  }
+  
+  .nav-link {
+    color: #f8f9fa !important;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(248, 249, 250, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+}

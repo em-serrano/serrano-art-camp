@@ -1,0 +1,99 @@
+/* gallery.css */
+.gallery-section {
+  padding: 2rem 0;
+  background: var(--accent-color);
+}
+
+.coming-soon-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.coming-soon-content {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.coming-soon-content h3 {
+  color: var(--secondary-color);
+  margin-top: 0;
+}
+
+.polaroid-stack {
+  position: relative;
+  height: 180px;
+  width: 150px;
+  margin: 1.5rem auto;
+}
+
+.polaroid {
+  background: white;
+  width: 140px;
+  height: 160px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.polaroid:nth-child(1) {
+  transform: rotate(-5deg);
+}
+
+.polaroid:nth-child(2) {
+  transform: rotate(3deg);
+}
+
+.polaroid:nth-child(3) {
+  transform: rotate(-2deg);
+}
+
+.instagram-follow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.instagram-icon {
+  color: #e1306c;
+  font-size: 1.8rem;
+  margin-right: 0.75rem;
+}
+
+.instagram-follow p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.instagram-link {
+  color: #e1306c;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.instagram-link:hover {
+  color: #c13584;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .instagram-follow {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .instagram-icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}
