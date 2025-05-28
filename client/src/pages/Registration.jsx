@@ -94,7 +94,7 @@ const initialState = {
     "Week 2: Dots and Lines (July 7-11)": false,
   },  
   fullSessions: {
-    "Week 1: Back to Nature (June 9-13)": false, // Set to true to indicate this session is full
+    "Week 1: Back to Nature (June 9-13)": true, // Set to true to indicate this session is full
     "Week 2: Dots and Lines (July 7-11)": false,
   },
   gradeLevel: {
