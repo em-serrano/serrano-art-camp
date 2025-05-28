@@ -114,6 +114,9 @@ const PricingAndActivities = () => {
                 <li>Lego Printmaking</li>
                 <li>Chalk Pastel & Glue Line Drawing</li>
               </ul>
+              <a className="btn btn-primary submit-registration-btn" href="#registration">
+                Register Now
+              </a>
               {week2Full && (
                 <p className="waitlist-text">
                   Join our waitlist by emailing us at{" "}

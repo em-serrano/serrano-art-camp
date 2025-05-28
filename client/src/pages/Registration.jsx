@@ -401,7 +401,7 @@ export default function Registration() {
   };
 
   return (
-    <section className="registration-section p-3">
+    <section id="registration" className="registration-section p-3">
       <SectionHeader
         icon={<FaPalette />}
         title=" Art Camp Registration"
