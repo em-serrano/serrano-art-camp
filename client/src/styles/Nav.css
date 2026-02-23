@@ -1,4 +1,5 @@
-/* Nav.css - Custom styles for Bootstrap navigation */
+@import url('https://fonts.googleapis.com/css2?family=Princess+Sophia&display=swap');
+
 
 /* Navbar base styles */
 .navbar {
@@ -6,6 +7,9 @@
   box-shadow: var(--shadow-md);
   font-family: var(--font-display);
   padding: 0.75rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 /* Brand/logo styles */
@@ -14,6 +18,10 @@
   color: var(--primary-color) !important;
   font-size: 1.5rem;
   transition: all 0.3s ease;
+}
+
+h3 {
+  font-family: 'Princess Sophia', cursive;
 }
 
 .navbar-brand:hover {

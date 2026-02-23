@@ -1,7 +1,8 @@
 /* gallery.css */
 .gallery-section {
-  padding: 2rem 0;
-  background: var(--accent-color);
+   padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .coming-soon-container {

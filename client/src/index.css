@@ -1,60 +1,54 @@
-* {
-  padding: 0;
-  margin: 0;
-}
-:root {
-  --bg-color: #fdfcf7; 
-  --primary-color: #4a6641; 
-  --secondary-color: #9a4d2f; 
-  --text-color: #333; 
-  --accent-color: #9abbb9; 
-  --button-bg: #9abbb9; 
-  --button-text: #333; 
-    
-    /* Status Colors */
-    --danger: #dc3545; 
-    --success: #28a745; 
-    --warning: #ffc107; 
-    
-    /* Fonts */
-    --font-main: 'Nunito', sans-serif; 
-    --font-display: 'Montserrat', sans-serif;
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
-    
-    /* Border Radius */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 16px;
+@import "tailwindcss";
+
+
+.video-fade {
+    will-change: opacity;
+    transform: translateZ(0);
+    transition: opacity 0.3s ease-out;
   }
   
-  
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
-  .app--container {
-    padding-top: 1rem;
-    background-image: url('/ArtCampBG.jpeg');
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: scroll;
-    background-position: center;
-    background-size: cover;
-    height: 100%;
-    width: 100vw;
-    background-repeat: no-repeat;
-    scroll-behavior: smooth;
+  .animate-fadeInUp {
+    animation: fadeInUp 1s both;
   }
 
-.footer-text a {
-  color: #e1306c;
-  text-decoration: none;
+/* Add these custom animations to your TailwindCSS config */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out;
 }
