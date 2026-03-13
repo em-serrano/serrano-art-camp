@@ -28,7 +28,7 @@ export default function SessionInfo() {
           <div className="text-left">
             <p className="text-[10px] uppercase font-black text-[#a87f5d] tracking-widest">Time</p>
             <p className="text-sm font-bold text-[#453c39]">Monday – Friday</p>
-            <p className="text-sm font-bold text-[#453c39]">9:30am – 12:30pm</p>
+            <p className="text-sm font-bold text-[#453c39]">9:00am – 12:35pm</p>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ export default function SessionInfo() {
         <div className="flex items-center gap-4 p-4 bg-[#f9c89e]/10 rounded-2xl">
           <FaPalette className="text-[#a87f5d] shrink-0" />
           <p className="text-sm font-bold text-[#453c39]">
-            Join us for the Art Show every Friday from 12:00pm – 12:30pm!
+            Join us for the Art Show every Friday from 12:00pm – 12:35pm!
           </p>
         </div>
       </div>
