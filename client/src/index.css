@@ -52,3 +52,7 @@
 .animate-slideIn {
   animation: slideIn 0.5s ease-out;
 }
+
+/* .perspective {
+  perspective: 1000px;
+} */

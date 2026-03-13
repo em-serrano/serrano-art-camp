@@ -8,6 +8,7 @@ import Hero from "./pages/Hero";
 import Gallery from "./pages/Gallery";
 import ContactPage from "./pages/Contact";
 import Registration from "./pages/Registration";
+import GoogleRegistration from "./pages/GoogleRegistration";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<PricingAndActivities />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/registration" element={<Registration />} />
+        <Route path="/registration" element={<GoogleRegistration />} />
 
     </Routes>
   );
