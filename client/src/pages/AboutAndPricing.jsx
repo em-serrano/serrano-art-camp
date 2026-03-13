@@ -40,7 +40,7 @@ const sessions = [
       "Mosaics",
       "Mountain Landscape",
       "Clay Coat of Arms",
-      "Glue Chalk Drawing",
+      "Glue and Chalk Drawing",
     ],
   },
 ];

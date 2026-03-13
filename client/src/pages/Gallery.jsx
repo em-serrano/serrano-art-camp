@@ -34,15 +34,15 @@ const Gallery = () => {
       { id: 3, src: image4, title: "Animal Sculptures", description: "Creative papier mache animal sculptures" },
       { id: 4, src: image1, title: "Sun Prints", description: "Cyanotype creations using natural elements" },
       { id: 5, src: image2, title: "Clay Creations", description: "Handmade clay dishes and pottery" },
-      { id: 6, src: image6, title: "Art Show", description: "Students proudly presenting their artwork" },
+      { id: 6, src: image6, title: "Art Show", description: "Artists proudly presenting their artwork" },
     ],
     week2: [
       { id: 7, src: imageW2_1, title: "Colorful Landscapes", description: "Inspired by Alma Thomas" },
       { id: 8, src: imageW2_2, title: "Treasure Map", description: "Coffee aged treasure maps" },
-      { id: 9, src: imageW2_3, title: "Seed Mosaics", description: "Animal mosaics using natural seeds" },
+      { id: 9, src: imageW2_3, title: "Seed Mosaics", description: "Snake mosaic using natural seeds" },
       { id: 10, src: imageW2_5, title: "Lego Prints", description: "Creative printmaking with Legos" },
       { id: 11, src: imageW2_4, title: "Chalk Drawings", description: "Glue resist chalk art" },
-      { id: 12, src: imageW2_6, title: "Final Showcase", description: "Week 2 student exhibition" },
+      { id: 12, src: imageW2_6, title: "Final Showcase", description: "Week 2 Art Exhibition" },
     ],
   };
 
