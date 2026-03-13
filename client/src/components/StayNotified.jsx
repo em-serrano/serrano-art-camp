@@ -26,10 +26,10 @@ export default function StayNotified({ spotsLeft }) {
       </div>
 
       <a
-        href="https://forms.gle/r6o7VPQYToFi8fUV7"
+        href="/registration"
         className="relative z-10 w-full py-4 bg-[#f9c89e] text-[#453c39] font-black text-center rounded-2xl hover:bg-[#fce5cf] transition-all shadow-lg active:scale-95"
       >
-        Join Mail List
+        Register Now
       </a>
     </div>
   );
