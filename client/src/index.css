@@ -53,7 +53,7 @@
   animation: slideIn 0.5s ease-out;
 }
 
-.perspective {
+/* .perspective {
   perspective: 1200px;
 }
 .preserve-3d {
@@ -66,4 +66,4 @@
 }
 .rotate-y-180 {
   transform: rotateY(180deg);
-}
+} */
