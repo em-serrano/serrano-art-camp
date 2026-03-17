@@ -1,6 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Footer from "../components/Footer";
-import { FaPaintBrush, FaEnvelopeOpenText } from "react-icons/fa";
+import { FaPaintBrush } from "react-icons/fa";
 import Navigation from "../components/Nav";
 import SessionCard from "../components/SessionCard";
 import StayNotified from "../components/StayNotified";
@@ -45,111 +46,99 @@ const sessions = [
   },
 ];
 
+const floatingImages = {
+  desktop: [
+    { src: "/gallery/2025Week1/SunPrints.webp", className: "top-[10%] left-[15%] w-100 rotate-[-10deg]" },
+    { src: "/gallery/2025Week2/TreasureMap.webp", className: "top-[60%] right-[8%] w-100 rotate-[-12deg]" },
+    { src: "/gallery/2025Week2/DotsAndLines.webp", className: "bottom-[10%] left-[15%] w-100 rotate-[6deg]" },
+    { src: "/gallery/2025Week2/DotWolf.webp", className: "top-[10%] right-[15%] w-100 rotate-[8deg]" },
+  ],
+  mobile: [
+    { src: "/gallery/2025Week1/SunPrints.webp", className: "top-[8%] -left-8 w-44 rotate-[-6deg]" },
+    { src: "/gallery/2025Week2/DotWolf.webp", className: "top-[28%] -right-8 w-44 rotate-[5deg]" },
+    { src: "/gallery/2025Week2/TreasureMap.webp", className: "top-[50%] -left-8 w-44 rotate-[-4deg]" },
+    { src: "/gallery/2025Week2/DotsAndLines.webp", className: "top-[72%] -right-8 w-44 rotate-[7deg]" },
+  ],
+};
+
 const PricingAndActivities = () => {
+  const animateProps = (i) => ({
+    initial: { y: 0 },
+    animate: { y: [0, -15, 0] },
+    transition: { duration: 8 + i * 2, repeat: Infinity, ease: "easeInOut" },
+  });
+
   return (
     <>
       <div className="absolute top-0 left-0 right-0 z-20">
         <Navigation />
       </div>
 
-      {/* BACKGROUND: Milky Vanilla & Soft Pastel Glows */}
       <section className="relative font-sans text-[#5c524e] bg-[#fefaf0] py-24 px-4 overflow-hidden min-h-screen">
-        {/* Soft Pastel Glows */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#f9c89e]/20 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#b8c5d6]/20 blur-[120px] rounded-full pointer-events-none" />
+        {/* Floating Images */}
+        {floatingImages.desktop.map((img, i) => (
+          <motion.img
+            key={`desktop-${i}`}
+            src={img.src}
+            alt=""
+            aria-hidden="true"
+            className={`absolute opacity-50 pointer-events-none rounded-xl shadow-md hidden md:block ${img.className}`}
+            {...animateProps(i)}
+          />
+        ))}
+        {floatingImages.mobile.map((img, i) => (
+          <motion.img
+            key={`mobile-${i}`}
+            src={img.src}
+            alt=""
+            aria-hidden="true"
+            className={`absolute opacity-40 pointer-events-none rounded-xl shadow-md block md:hidden ${img.className}`}
+            {...animateProps(i)}
+          />
+        ))}
+
+        {/* Background glows */}
+        <div className="absolute top-0 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-[#f9c89e]/20 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-[#b8c5d6]/20 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
-          {/* Section Header */}
           <div className="mb-20">
-            <h2 className="text-5xl md:text-7xl font-black text-[#453c39] mb-6 tracking-tighter">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-[#453c39] mb-6 tracking-tighter">
               Pricing & Details
             </h2>
-
-            {/* <p className="text-xl text-[#786c67] max-w-2xl mx-auto leading-relaxed font-medium">
-              Serrano Art Camp 2026
-            </p>
-
-            <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6 text-sm font-bold text-[#8d827e]">
-              <span className="flex items-center gap-2">
-                Valor North Austin
-              </span>
-              <span className="hidden md:block opacity-30">|</span>
-              <span className="flex items-center gap-2">9:00am – 12:35pm</span>
-            </div> */}
             <SessionInfo />
           </div>
 
-          {/* Session Cards Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-24 px-4">
+          <div className="grid md:grid-cols-3 gap-8 mb-24 px-2 sm:px-4">
             {sessions.map((session) => (
               <SessionCard key={session.id} session={session} />
             ))}
           </div>
 
-          {/* Information Grid */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left px-4">
-            {/* Pricing Section */}
-            <div className="bg-white/50 backdrop-blur-md border border-[#f5e6d3] rounded-[2.5rem] p-10 shadow-sm">
-              <h3 className="text-2xl font-black text-[#453c39] mb-8 flex items-center gap-3">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left px-2 sm:px-4">
+            {/* Multiple Weeks */}
+            <div className="bg-white/50 backdrop-blur-md border border-[#f5e6d3] rounded-2xl p-8 sm:p-10 shadow-sm">
+              <h3 className="text-2xl font-black text-[#453c39] mb-6 flex items-center gap-3">
                 <FaPaintBrush className="text-[#f9c89e]" />
                 Attending Multiple Weeks?
               </h3>
-
-              <div className="space-y-6">
-                {/* <p className="text-[#786c67] leading-relaxed">
-                  Registration is{" "}
-                  <strong className="text-[#453c39]">$250 per week</strong>.
-                  This includes all premium art supplies, specialized
-                  instruction, and a daily snack.
-                </p> */}
-
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-5 rounded-2xl bg-[#fdf2e9] border border-[#fde5cc]">
-                    <span className="text-lg font-bold text-[#5c524e]">
-                      2 Sessions
-                    </span>
-                    <span className="text-[#a87f5d] font-black tracking-tight">
-                      $50 OFF per Artist
-                    </span>
+              <div className="space-y-4">
+                {[
+                  { label: "2 Sessions", discount: "$50 OFF per Artist" },
+                  { label: "All 3 Sessions", discount: "$100 OFF per Artist" },
+                ].map((offer, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-[#fdf2e9] border border-[#fde5cc]"
+                  >
+                    <span className="text-lg font-bold text-[#5c524e]">{offer.label}</span>
+                    <span className="text-[#a87f5d] font-black tracking-tight">{offer.discount}</span>
                   </div>
-                  <div className="flex items-center justify-between p-5 rounded-2xl bg-[#fdf2e9] border border-[#fde5cc]">
-                    <span className="text-lg font-bold text-[#5c524e]">
-                      All 3 Sessions 
-                    </span>
-                    <span className="text-[#a87f5d] font-black tracking-tight">
-                      $100 OFF per Artist
-                    </span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Registration/Mailing Section */}
-            {/* <div className="bg-[#453c39] rounded-[2.5rem] p-10 shadow-xl flex flex-col justify-between overflow-hidden relative group">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#f9c89e]/10 blur-3xl group-hover:bg-[#f9c89e]/20 transition-all duration-700" />
-              
-              <div className="relative z-10">
-                <h3 className="text-2xl font-black text-[#fefaf0] mb-4 flex items-center gap-3">
-                  <FaEnvelopeOpenText className="text-[#f9c89e]" />
-                  Stay Notified
-                </h3>
-                <p className="text-[#c7bdb9] mb-8 leading-relaxed">
-                  Our sessions are limited to <span className="text-[#f9c89e] font-bold">15 artists</span> each. 
-                  Join our list for priority registration alerts.
-                </p>
-              </div>
-
-              <a
-                href="https://forms.gle/r6o7VPQYToFi8fUV7"
-                className="relative z-10 w-full py-4 bg-[#f9c89e] text-[#453c39] font-black text-center rounded-2xl hover:bg-[#fce5cf] transition-all shadow-lg active:scale-95"
-              >
-                Join Waitlist
-              </a>
-
-            </div> */}
-            <StayNotified
-              spotsLeft={{ session1: 15, session2: 15, session3: 15 }}
-            />
+            <StayNotified spotsLeft={{ session1: 15, session2: 15, session3: 15 }} />
           </div>
         </div>
       </section>

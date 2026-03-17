@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import Navigation from "../components/Nav";
 import Footer from "../components/Footer";
 
-import image1 from "../assets/Week2/TeachingClay.jpeg";
-import image2 from "../assets/Week2/TreasureMap.jpeg";
-import image3 from "../assets/Week1/WorkingOnOceans1.jpeg";
-import image4 from "../assets/Week2/TeachingSeeds.jpeg";
-
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const images = [image1, image2, image3, image4];
+  const images = [
+    "/hero/TeachingClay.webp",
+    "/hero/HelpingWithClay.webp",
+    "/hero/TeachingSeeds.webp",
+  ];
 
   useEffect(() => {
     setIsLoaded(true);
@@ -33,7 +32,6 @@ export default function Hero() {
 
   return (
     <>
-      {/* Same nav pattern as Pricing page */}
       <div className="absolute top-0 left-0 right-0 z-20">
         <Navigation />
       </div>
@@ -47,14 +45,15 @@ export default function Hero() {
               key={index}
               src={image}
               alt={`Studio activity ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              loading={index === 0 ? "eager" : "lazy"}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1400ms] ${
                 index === currentImageIndex ? "opacity-50" : "opacity-0"
               }`}
             />
           ))}
         </div>
 
-        {/* Content container (same pattern as Pricing page) */}
+        {/* Content */}
         <div className="relative z-10 max-w-6xl mx-auto text-center">
 
           {/* Hero Header */}

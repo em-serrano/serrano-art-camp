@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Navigation from "../components/Nav";
 import {
@@ -8,20 +8,6 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 
-// Images
-import image1 from "../assets/Week1/SunPrints.jpeg";
-import image2 from "../assets/Week1/LeafPlates.jpeg";
-import image3 from "../assets/Week1/WorkingOnOceans.jpeg";
-import image4 from "../assets/Week2/CatSculpture.jpeg";
-import image5 from "../assets/Week1/WorkingOnFlowers.jpeg";
-import image6 from "../assets/Week1/Week1Show.jpeg";
-import imageW2_1 from "../assets/Week2/DotsAndLines.jpeg";
-import imageW2_2 from "../assets/Week2/TreasureMap.jpeg";
-import imageW2_3 from "../assets/Week2/SeedMosaic.jpeg";
-import imageW2_4 from "../assets/Week2/GlueandChalk.jpeg";
-import imageW2_5 from "../assets/Week2/LegoPrints.jpeg";
-import imageW2_6 from "../assets/Week2/Week2Show.jpeg";
-
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeTab, setActiveTab] = useState("week1");
@@ -29,26 +15,90 @@ const Gallery = () => {
 
   const galleryImages = {
     week1: [
-      { id: 1, src: image5, title: "Floral Masterpieces", description: "Georgia O'Keefe inspired floral painting" },
-      { id: 2, src: image3, title: "Ocean Silhouettes", description: "Dramatic ocean scenes with silhouettes" },
-      { id: 3, src: image4, title: "Animal Sculptures", description: "Creative papier mache animal sculptures" },
-      { id: 4, src: image1, title: "Sun Prints", description: "Cyanotype creations using natural elements" },
-      { id: 5, src: image2, title: "Clay Creations", description: "Handmade clay dishes and pottery" },
-      { id: 6, src: image6, title: "Art Show", description: "Artists proudly presenting their artwork" },
+      {
+        id: 1,
+        src: "/gallery/2025Week1/WorkingOnFlowers.webp",
+        title: "Floral Masterpieces",
+        description: "Georgia O'Keefe inspired floral painting",
+      },
+      {
+        id: 2,
+        src: "/gallery/2025Week1/WorkingOnOceans.webp",
+        title: "Ocean Silhouettes",
+        description: "Dramatic ocean scenes with silhouettes",
+      },
+      {
+        id: 3,
+        src: "/gallery/2025Week1/CatSculpture.webp",
+        title: "Animal Sculptures",
+        description: "Creative papier mache animal sculptures",
+      },
+      {
+        id: 4,
+        src: "/gallery/2025Week1/SunPrints.webp",
+        title: "Sun Prints",
+        description: "Cyanotype creations using natural elements",
+      },
+      {
+        id: 5,
+        src: "/gallery/2025Week1/LeafPlates.webp",
+        title: "Clay Creations",
+        description: "Handmade clay dishes and pottery",
+      },
+      {
+        id: 6,
+        src: "/gallery/2025Week1/Week1Show.webp",
+        title: "Art Show",
+        description: "Artists proudly presenting their artwork",
+      },
     ],
     week2: [
-      { id: 7, src: imageW2_1, title: "Colorful Landscapes", description: "Inspired by Alma Thomas" },
-      { id: 8, src: imageW2_2, title: "Treasure Map", description: "Coffee aged treasure maps" },
-      { id: 9, src: imageW2_3, title: "Seed Mosaics", description: "Snake mosaic using natural seeds" },
-      { id: 10, src: imageW2_5, title: "Lego Prints", description: "Creative printmaking with Legos" },
-      { id: 11, src: imageW2_4, title: "Chalk Drawings", description: "Glue resist chalk art" },
-      { id: 12, src: imageW2_6, title: "Final Showcase", description: "Week 2 Art Exhibition" },
+      {
+        id: 7,
+        src: "/gallery/2025Week2/DotsAndLines.webp",
+        title: "Colorful Landscapes",
+        description: "Inspired by Alma Thomas",
+      },
+      {
+        id: 8,
+        src: "/gallery/2025Week2/TreasureMap.webp",
+        title: "Treasure Map",
+        description: "Coffee aged treasure maps",
+      },
+      {
+        id: 9,
+        src: "/gallery/2025Week2/SeedMosaic.webp",
+        title: "Seed Mosaic",
+        description: "Snake mosaic using natural seeds",
+      },
+      {
+        id: 10,
+        src: "/gallery/2025Week2/LegoPrints.webp",
+        title: "Lego Printmaking",
+        description: "Creative printmaking with Legos",
+      },
+      {
+        id: 11,
+        src: "/gallery/2025Week2/GlueandChalk.webp",
+        title: "Glue and Chalk Drawing",
+        description: "Glue resist chalk art",
+      },
+      {
+        id: 12,
+        src: "/gallery/2025Week2/Week2Show.webp",
+        title: "Final Showcase",
+        description: "Week 2 Art Exhibition",
+      },
     ],
   };
 
   const openModal = (image) => {
     setSelectedImage(image);
     document.body.style.overflow = "hidden";
+
+    // preload next image for smoother navigation
+    const preload = new Image();
+    preload.src = image.src;
   };
 
   const closeModal = () => {
@@ -67,14 +117,12 @@ const Gallery = () => {
 
     const nextImage = images[newIndex];
 
-    // preload next image
     const preload = new Image();
     preload.src = nextImage.src;
 
     setSelectedImage(nextImage);
   };
 
-  // keyboard navigation
   useEffect(() => {
     const handleKey = (e) => {
       if (!selectedImage) return;
@@ -88,7 +136,6 @@ const Gallery = () => {
     return () => window.removeEventListener("keydown", handleKey);
   }, [selectedImage]);
 
-  // swipe navigation
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -111,8 +158,6 @@ const Gallery = () => {
       </div>
 
       <section className="relative font-sans text-[#5c524e] bg-[#fefaf0] py-24 px-4 overflow-hidden min-h-screen">
-
-        {/* Soft background glow */}
         <div className="absolute top-0 left-1/3 w-96 h-96 bg-[#f9c89e]/20 blur-[120px] rounded-full" />
         <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-[#b8c5d6]/20 blur-[120px] rounded-full" />
 
@@ -148,7 +193,7 @@ const Gallery = () => {
             </div>
           </div>
 
-          {/* Masonry Grid */}
+          {/* Gallery Grid */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 mb-20">
             {galleryImages[activeTab].map((image) => (
               <div
@@ -160,7 +205,13 @@ const Gallery = () => {
                   <img
                     src={image.src}
                     alt={image.title}
-                    className="w-full object-cover group-hover:scale-105 transition duration-700"
+                    loading={image.id <= 3 ? "eager" : "lazy"}
+                    fetchpriority={image.id <= 3 ? "high" : "auto"}
+                    decoding="async"
+                    className="w-full object-cover transition duration-700 group-hover:scale-105 blur-[6px]"
+                    onLoad={(e) =>
+                      e.currentTarget.classList.remove("blur-[6px]")
+                    }
                   />
                 </div>
 
@@ -195,7 +246,6 @@ const Gallery = () => {
               @serranoartcamp
             </a>
           </div>
-
         </div>
       </section>
 
