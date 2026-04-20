@@ -138,7 +138,7 @@ const PricingAndActivities = () => {
               </div>
             </div>
 
-            <StayNotified spotsLeft={{ session1: 6, session2: 8, session3: 13 }} />
+            <StayNotified spotsLeft={{ session1: 1, session2: 0, session3: 13 }} />
           </div>
         </div>
       </section>
